@@ -188,10 +188,7 @@ app.post("/login", async(req, res) => {
     }
         const token = jwt.sign({_id:user._id } , process.env.JWT_SECRET);
         res.status(200).cookie("token" , token , {
-        httpOnly:true,
-        maxAge:15*60*1000,
         sameSite:"none",
-        secure:true,
         }).json({
             success:true,
             message: "Login Successful",
